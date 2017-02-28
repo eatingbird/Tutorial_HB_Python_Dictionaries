@@ -82,6 +82,7 @@ def update_restaurant(ratings):
 
     if restaurant not in ratings:
         print "Warning: new restaurant is being added."
+        restaurant = restaurant[0].upper() + restaurant[1:]
 
     rating = int(raw_input("Enter a new rating: "))
 
