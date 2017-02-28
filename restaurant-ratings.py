@@ -70,6 +70,8 @@ def prompt_user(ratings):
 
 
 def update_random_restaurant(ratings):
+    """Give option to enter a rating for a random restaurant."""
+
     rand_restaurant = random.choice(ratings.keys())
     print "The random restaurant is: %s" % rand_restaurant
     rating = int(raw_input("Please enter a new rating: "))
@@ -78,11 +80,12 @@ def update_random_restaurant(ratings):
 
 
 def update_restaurant(ratings):
+    """Update existing restaurant, otherwise enter a new."""
+
     restaurant = raw_input("Which restaurant would you like to update? ")
 
-    if restaurant[0].upper() + restaurant[1:] not in ratings:
+    if restaurant not in ratings:
         print "Warning: new restaurant is being added."
-        restaurant = restaurant[0].upper() + restaurant[1:]
 
     rating = int(raw_input("Enter a new rating: "))
 
