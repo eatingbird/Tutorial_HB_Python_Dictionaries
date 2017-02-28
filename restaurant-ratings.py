@@ -80,7 +80,7 @@ def update_random_restaurant(ratings):
 def update_restaurant(ratings):
     restaurant = raw_input("Which restaurant would you like to update? ")
 
-    if restaurant not in ratings:
+    if restaurant[0].upper() + restaurant[1:] not in ratings:
         print "Warning: new restaurant is being added."
         restaurant = restaurant[0].upper() + restaurant[1:]
 
