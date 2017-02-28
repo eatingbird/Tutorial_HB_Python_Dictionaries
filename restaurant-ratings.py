@@ -1,5 +1,5 @@
 import sys
-# your code goes here
+import random
 
 ratings = {}
 
@@ -39,16 +39,19 @@ def prompt_user(ratings):
     """ This runs the restaurant-ratings program."""
 
     while True:
+        print "Would you like to:"
+        print "1. Add another restaurant"
+        print "2. Update the rating for a random restaurant"
+        print "3. Quit"
+        user_choice = raw_input("Enter a number: ")
 
-        get_ratings_from_user(ratings)
-
-        # Ask user if they want to keep entering restaurants and ratings
-        user_choice = raw_input("Do you want to add another restaurant? y/n ").lower()
-
-        if user_choice == 'y':
-            continue
-        elif user_choice == 'n':
+        if user_choice == "1":
+            get_ratings_from_user(ratings)
+        elif user_choice == "2":
+            update_random_restaurant(ratings)
+        elif user_choice == "3":
             print_result = raw_input("Do you want to print the result? y/n ").lower()
+
             if print_result == 'y':
                 print
                 print_restaurant_ratings(ratings)
@@ -59,9 +62,16 @@ def prompt_user(ratings):
                 print "Restaurants will not be printed."
                 break
         else:
-            print "Invalid input. Program will quit without printing."
-            break
+            print "Invalid input."
+            continue
 
+
+def update_random_restaurant(ratings):
+    rand_restaurant = random.choice(ratings.keys())
+    print "The random restaurant is: %s" % rand_restaurant
+    rating = int(raw_input("Please enter a new rating: "))
+
+    ratings[rand_restaurant] = rating
 
 
 get_ratings_from_file(ratings)
