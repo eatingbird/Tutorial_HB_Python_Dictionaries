@@ -28,28 +28,41 @@ def get_ratings_from_user(ratings):
     Sets restuarant and ratings as key value pairs to supplied dictionary.
     """
 
+    restaurant = raw_input("Enter the name of the restaurant: ")
+    rating = int(raw_input("Enter the rating of the restaurant: "))
+
+    restaurant = restaurant[0].upper() + restaurant[:-1]
+    ratings[restaurant] = rating
+
+
+def prompt_user(ratings):
+    """ This runs the restaurant-ratings program."""
+
     while True:
 
-        restaurant = raw_input("Enter the name of the restaurant: ")
-        rating = int(raw_input("Enter the rating of the restaurant: "))
-
-        restaurant = restaurant[0].upper() + restaurant[:-1]
-        ratings[restaurant] = rating
+        get_ratings_from_user(ratings)
 
         # Ask user if they want to keep entering restaurants and ratings
         user_choice = raw_input("Do you want to add another restaurant? y/n ").lower()
-        print user_choice
 
         if user_choice == 'y':
             continue
         elif user_choice == 'n':
-            break
+            print_result = raw_input("Do you want to print the result? y/n ").lower()
+            if print_result == 'y':
+                print
+                print_restaurant_ratings(ratings)
+                break
+            elif print_result == 'n':
+                break
+            else:
+                print "Restaurants will not be printed."
+                break
         else:
-            print "The answer was supposed to be y or n. We will print the result thus far."
+            print "Invalid input. Program will quit without printing."
             break
+
 
 
 get_ratings_from_file(ratings)
-get_ratings_from_user(ratings)
-print
-print_restaurant_ratings(ratings)
+prompt_user(ratings)
