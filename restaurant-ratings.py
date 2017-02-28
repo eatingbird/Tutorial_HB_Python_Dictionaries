@@ -25,7 +25,7 @@ def print_restaurant_ratings(ratings):
 def get_ratings_from_user(ratings):
     """Prompts users for restaurants and ratings.
 
-    Sets restuarant and ratings as key value pairs to supplied dictionary.
+    Sets restaurant and ratings as key value pairs to supplied dictionary.
     """
 
     restaurant = raw_input("Enter the name of the restaurant: ")
@@ -42,7 +42,8 @@ def prompt_user(ratings):
         print "Would you like to:"
         print "1. Add another restaurant"
         print "2. Update the rating for a random restaurant"
-        print "3. Quit"
+        print "3. Update the rating of a restaurant"
+        print "4. Quit"
         user_choice = raw_input("Enter a number: ")
 
         if user_choice == "1":
@@ -50,6 +51,8 @@ def prompt_user(ratings):
         elif user_choice == "2":
             update_random_restaurant(ratings)
         elif user_choice == "3":
+            update_restaurant(ratings)
+        elif user_choice == "4":
             print_result = raw_input("Do you want to print the result? y/n ").lower()
 
             if print_result == 'y':
@@ -72,6 +75,13 @@ def update_random_restaurant(ratings):
     rating = int(raw_input("Please enter a new rating: "))
 
     ratings[rand_restaurant] = rating
+
+
+def update_restaurant(ratings):
+    restaurant = raw_input("Which restaurant would you like to update? ")
+    rating = int(raw_input("Enter a new rating: "))
+
+    ratings[restaurant] = rating
 
 
 get_ratings_from_file(ratings)
