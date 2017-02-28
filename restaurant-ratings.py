@@ -5,7 +5,7 @@ ratings = {}
 
 
 def get_ratings_from_file(ratings):
-    """Prints restaurants in alphabetical order with their ratings."""
+    """Set restaurants and ratings from file as key value pairs."""
 
     file_name = sys.argv[1]
     ratings_file = open(file_name)
@@ -16,30 +16,30 @@ def get_ratings_from_file(ratings):
 
 
 def print_restaurant_ratings(ratings):
-    """doc string needed"""
+    """Prints restaurants in alphabetical order with their ratings."""
 
-    # Print restaurants and ratings in alphabetical order
     for restaurant in sorted(ratings.keys()):
         print '%s is rated at %d' % (restaurant, ratings[restaurant])
 
 
 def get_ratings_from_user(ratings):
-    """doc"""
+    """Prompts users for restaurants and ratings.
 
-    print "Type 'q' to quit."
+    Sets restuarant and ratings as key value pairs to supplied dictionary.
+    """
 
     prompt_user = True
 
     while prompt_user:
- 
+
         restaurant = raw_input("Enter the name of the restaurant: ")
         rating = int(raw_input("Enter the rating of the restaurant: "))
 
         restaurant = restaurant[0].upper() + restaurant[:-1]
         ratings[restaurant] = rating
 
+        # Ask user if they want to keep entering restaurants and ratings
         user_choice = raw_input("Do you want to add another restaurant? y/n ").lower()
-
 
         if user_choice is 'y':
             continue
