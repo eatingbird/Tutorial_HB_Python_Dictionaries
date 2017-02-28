@@ -1,16 +1,19 @@
 import sys
 # your code goes here
 
-def print_ratings():
+def print_restaurant_ratings():
+    """Prints restaurants in alphabetical order with their ratings."""
+
     file_name = sys.argv[1]
     ratings_file = open(file_name)
-    restaurant_ratings = {}
+    ratings = {}
 
     for line in ratings_file:
         restaurant, rating = line.rstrip().split(":")
-        restaurant_ratings[restaurant] = rating
+        ratings[restaurant] = rating
 
-    for restaurant_key in sorted(restaurant_ratings.keys()):
-        print '%s is rated at %s' % (restaurant_key, restaurant_ratings[restaurant_key])
+    # Print restaurants and ratings in alphabetical order
+    for restaurant_key in sorted(ratings.keys()):
+        print '%s is rated at %s' % (restaurant_key, ratings[restaurant_key])
 
-print_ratings()
+print_restaurant_ratings()
